@@ -1,0 +1,250 @@
+$bg-color: black;
+$ui-bg: rgba(0, 0, 0, 0.6);
+$button-bg: #010404;
+$button-border: #d4a373;
+$button-color: #e3bba6;
+$button-hover-bg: #1a1f1f;
+$tip-color: #dd2529;
+$lives-bg: #5596c5;
+$gameover-bg: rgba(0,0,0,0.85);
+$gameover-color: white;
+$shadow-light: rgba(0,0,0,0.1);
+$shadow-dark: rgba(0,0,0,0.6);
+
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin button-style($bg, $border, $color) {
+  background-color: $bg;
+  border: 2px solid $border;
+  border-radius: 8px;
+  color: $color;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.35);
+    filter: brightness(1.1);
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    border-color: #999;
+    box-shadow: none;
+    cursor: not-allowed;
+    filter: grayscale(70%);
+  }
+}
+
+body {
+  background-color: $bg-color;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 15px $shadow-light;
+  @include flex-center(column, 20px);
+}
+
+.site-footer {
+  background-color: #f4abc9;
+  color: #f8fafb;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+#game {
+  width: 100vw;
+  min-height: 100vh;
+  @include flex-center(column, 0);
+  justify-content: center;
+  background-image: url('../images/back-alley-background2.png');
+  background-size: cover;
+  background-position: center;
+  padding: 20px 0;
+}
+
+#ui {
+  width: 90%;
+  max-width: 600px;
+  @include flex-center(column, 10px);
+  background-color: $ui-bg;
+  padding: 20px;
+  border-radius: 12px;
+
+  p {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+    margin: 5px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  }
+
+  #tip {
+    font-size: 1rem;
+    color: $tip-color;
+    text-align: center;
+  }
+
+  #lives {
+  background-color: $lives-bg;
+  color: white;
+  border: 2px solid white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+}
+
+#letters {
+  @include flex-center(row, 5px);
+  flex-wrap: wrap;
+
+  button {
+    @include button-style($button-bg, $button-border, $button-color);
+  }
+}
+
+#playAgain {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  @include button-style($button-bg, $button-border, $button-color);
+  z-index: 1000;
+
+  &:hover {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+    background-color: $button-hover-bg;
+  }
+
+  &:active {
+    transform: translateX(-50%) translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+}
+
+#gameOverPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background: $gameover-bg;
+  color: $gameover-color;
+  text-align: center;
+  border: 2px solid $button-border;
+  border-radius: 12px;
+  box-shadow: 0 0 20px $shadow-dark;
+  display: none;
+  z-index: 9999;
+
+  button {
+    margin-top: 15px;
+    @include button-style($button-bg, $button-border, $button-color);
+
+    &:hover {
+      background-color: $button-hover-bg;
+    }
+  }
+}
+
+#characterSection {
+  width: 100%;
+  height: 300px;
+  @include flex-center(column, 0);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 100px;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    display: none;
+
+    &.active {
+      display: block;
+      animation: fadeIn 0.7s ease forwards;
+    }
+  }
+
+  img#cheer {
+    width: 350px;
+  }
+
+  img#wait {
+    width: 250px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .site-header,
+  .site-footer {
+    padding: 1rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInQuick {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#characterSection img.active {
+  animation: fadeIn 0.7s ease forwards;
+}
+
+#cheer,
+#wait,
+#stand {
+  animation: fadeInQuick 0.5s ease forwards;
+}

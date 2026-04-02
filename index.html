@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>COMP2132 Hangman Project</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+<div id="game">
+  <div id="characterSection">
+    <img id="stand" class="active" src="images/among-us/among-us-green-stand.png" alt="green stand">
+    <img id="wait" src="images/among-us/among-us-green-wait.gif" alt="green cry" style="display: none">
+    <img id="cheer" src="images/among-us/among-us-high-five.gif" alt="green cheer" style="display: none">
+  </div>
+
+    <div>
+        <img id="loseChar" src="images/green-dead.gif" alt="lost character" style="display: none;">
+    </div>
+
+    <div id="ui">
+        <div class="section">
+            <p id="tip"></p>
+        </div>
+        <div class="section">
+            <p id="lives"></p>
+        </div>
+        <div class="section">
+            <p id="word"></p>
+        </div>
+        <div class="section">
+            <div id="letters"></div>
+        </div>
+        <div class="section">
+            <p id="status"></p>
+        </div>
+    </div>
+</div>
+
+<div id="gameOverPopup">
+    <h1>Game Over</h1>
+    <button id="playAgain" onclick="playAgain()">Play Again</button>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

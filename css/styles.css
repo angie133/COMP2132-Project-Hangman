@@ -1,0 +1,270 @@
+body {
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: "Arial", sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-footer {
+  background-color: #f4abc9;
+  color: #f8fafb;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+#game {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  justify-content: center;
+  background-image: url("../images/back-alley-background2.png");
+  background-size: cover;
+  background-position: center;
+  padding: 20px 0;
+}
+
+#ui {
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+}
+#ui p {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  margin: 5px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+#ui #tip {
+  font-size: 1rem;
+  color: #dd2529;
+  text-align: center;
+}
+#ui #lives {
+  background-color: #5596c5;
+  color: white;
+  border: 2px solid white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+#letters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+#letters button {
+  background-color: #010404;
+  border: 2px solid #d4a373;
+  border-radius: 8px;
+  color: #e3bba6;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+#letters button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.1);
+}
+#letters button:disabled {
+  background-color: #ccc;
+  border-color: #999;
+  box-shadow: none;
+  cursor: not-allowed;
+  filter: grayscale(70%);
+}
+
+#playAgain {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-color: #010404;
+  border: 2px solid #d4a373;
+  border-radius: 8px;
+  color: #e3bba6;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+#playAgain:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.1);
+}
+#playAgain:disabled {
+  background-color: #ccc;
+  border-color: #999;
+  box-shadow: none;
+  cursor: not-allowed;
+  filter: grayscale(70%);
+}
+#playAgain {
+  z-index: 1000;
+}
+#playAgain:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  background-color: #1a1f1f;
+}
+#playAgain:active {
+  transform: translateX(-50%) translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#gameOverPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  text-align: center;
+  border: 2px solid #d4a373;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 9999;
+}
+#gameOverPopup button {
+  margin-top: 15px;
+  background-color: #010404;
+  border: 2px solid #d4a373;
+  border-radius: 8px;
+  color: #e3bba6;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+#gameOverPopup button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.1);
+}
+#gameOverPopup button:disabled {
+  background-color: #ccc;
+  border-color: #999;
+  box-shadow: none;
+  cursor: not-allowed;
+  filter: grayscale(70%);
+}
+#gameOverPopup button:hover {
+  background-color: #1a1f1f;
+}
+
+#characterSection {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 100px;
+}
+#characterSection img {
+  max-height: 100%;
+  max-width: 100%;
+  display: none;
+}
+#characterSection img.active {
+  display: block;
+  animation: fadeIn 0.7s ease forwards;
+}
+#characterSection img#cheer {
+  width: 350px;
+}
+#characterSection img#wait {
+  width: 250px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 500px) {
+  body {
+    font-size: 0.95rem;
+  }
+  .site-header,
+  .site-footer {
+    padding: 1rem;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInQuick {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#characterSection img.active {
+  animation: fadeIn 0.7s ease forwards;
+}
+
+#cheer,
+#wait,
+#stand {
+  animation: fadeInQuick 0.5s ease forwards;
+}/*# sourceMappingURL=styles.css.map */
